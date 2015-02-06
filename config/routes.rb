@@ -1,9 +1,15 @@
 Example::Application.routes.draw do
-  resources :high_scores
 
-  root 'high_scores#index'
+  constraints(host: /^(?!api).+/) do
+    resources :high_scores
+
+    root 'high_scores#index'
+  end
 
   # API+API Documentation
-  mount API::Base => '/api'
-  mount GrapeSwaggerRails::Engine => '/apidoc'
+  constraints(host: /^api.+/) do
+    mount API::Base => '/'
+    mount GrapeSwaggerRails::Engine => '/'
+  end
+
 end

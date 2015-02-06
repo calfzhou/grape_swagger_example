@@ -7,7 +7,7 @@ module API
     mount API::HighScores => '/high_scores'
 
     add_swagger_documentation(
-      base_path: "/api",
+      # base_path: "/",
       hide_documentation_path: true
     )
   end
